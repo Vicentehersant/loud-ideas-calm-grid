@@ -1,3 +1,5 @@
+![loud-ideas-calm-grid](banner.png)
+
 # Loud Ideas, Calm Grid
 
 **Live deck → [loud-ideas-calm-grid.vercel.app](https://loud-ideas-calm-grid.vercel.app)**
