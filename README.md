@@ -1,36 +1,40 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Loud Ideas, Calm Grid
 
-## Getting Started
+**Live deck → [loud-ideas-calm-grid.vercel.app](https://loud-ideas-calm-grid.vercel.app)**
 
-First, run the development server:
+A design-direction presentation for a Pinterest redesign (UXDG 315 · Front-End Design, SCAD), built as a website instead of slides.
 
+![Open Graph card](app/opengraph-image.png)
+
+## Why I present in code
+Slides flatten interaction design. Building the deck as a web app lets me:
+- **Show motion for real.** Press-and-hold, pin hover, board save and color search are live components the audience can watch, not GIFs.
+- **Share one link.** A QR code on screen opens the same deck on everyone's phone.
+- **Reuse the work.** The deck uses the same tokens and components as the design system it presents.
+
+## How it's built
+| Part | What it does |
+|---|---|
+| `components/Deck.tsx` | 29-step story (Context → Insights → Idea → Evidence → Impact) with keyboard navigation and GSAP reveals |
+| `components/motion-cards/` | Interactive demos of each micro-interaction (`PressCard`, `PinHoverCard`, `BoardSaveCard`, `ColorSearchCard`, `TabBarCard`, `TypeBlockCard`) |
+| `app/canvas` · `components/MoodCanvas.tsx` | Infinite moodboard canvas |
+| `app/process` · `components/ProcessCanvas.tsx` | Process board showing research and iterations |
+| `app/og-card`, `opengraph-image.png` | Social preview card |
+| `qrcode.react` | QR on screen so the audience can follow on their phones |
+
+**Stack:** Next.js 16 (App Router) · React 19 · Tailwind CSS v4 · GSAP · Phosphor Icons · deployed on Vercel.
+
+## My workflow
+1. **Story first.** Outline the narrative as named steps before any visuals (see `STEP_NAMES` in `Deck.tsx`).
+2. **Tokens before slides.** Colors, type and spacing come from the redesign's design system, so the deck is the first consumer of the system.
+3. **One component per idea.** Each insight that involves interaction gets a live motion card.
+4. **Ship to a URL.** Deploy to Vercel, add an OG image and QR code, and rehearse on the real link.
+
+## Run locally
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Credits
+Design and code by [Vicente Hernaiz](https://vicentehernaiz.tech). Moodboard images are third-party reference material collected for a student project and remain the property of their owners. Pinterest is a trademark of Pinterest, Inc.; this is an unofficial student concept, not affiliated with Pinterest.
